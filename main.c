@@ -36,10 +36,9 @@
 #include "ble_hci.h"
 #include "ble_srv_common.h"
 #include "ble_advdata.h"
-#include "ble_nrf6310_pins.h"
+#include "ble_eval_board_pins.h"
 #include "ble_stack_handler.h"
 #include "app_timer.h"
-#include "ble_error_log.h"
 #include "ble_debug_assert_handler.h"
 #include "nrf_temp.h"
 
@@ -70,7 +69,8 @@ static app_timer_id_t m_advdata_update_timer;
  */
 void app_error_handler(uint32_t error_code, uint32_t line_num, const uint8_t * p_file_name)
 {
-    nrf_gpio_pin_set(ASSERT_LED_PIN_NO);
+    nrf_gpio_pin_set(CONNECTED_LED_PIN_NO);
+    nrf_gpio_pin_set(ADVERTISING_LED_PIN_NO);
 
     // This call can be used for debug purposes during development of an application.
     // @note CAUTION: Activating this code will write the stack to flash on an error.
@@ -110,7 +110,6 @@ static void leds_init(void)
 {
     GPIO_LED_CONFIG(ADVERTISING_LED_PIN_NO);
     GPIO_LED_CONFIG(CONNECTED_LED_PIN_NO);
-    GPIO_LED_CONFIG(ASSERT_LED_PIN_NO);
 }
 
 /**@brief Function for the GAP initialization.
