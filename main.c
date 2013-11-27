@@ -202,11 +202,11 @@ static void advdata_update(void)
     uint32_t temperature_data = temperature_data_get();
     
     service_data[0].service_uuid = BLE_UUID_BATTERY_SERVICE;
-    service_data[0].data.size    = 1;
+    service_data[0].data.size    = sizeof(battery_data);
     service_data[0].data.p_data  = &battery_data;
 
     service_data[1].service_uuid = BLE_UUID_HEALTH_THERMOMETER_SERVICE;
-    service_data[1].data.size    = 4;
+    service_data[1].data.size    = sizeof(temperature_data);
     service_data[1].data.p_data  = (uint8_t *) &temperature_data;
 
     // Build and set advertising data
@@ -279,7 +279,7 @@ static void advertising_start(void)
  */
 static void on_ble_evt(ble_evt_t * p_ble_evt)
 {
-    uint32_t                         err_code = NRF_SUCCESS;
+    uint32_t err_code = NRF_SUCCESS;
     
     switch (p_ble_evt->header.evt_id)
     {
