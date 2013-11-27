@@ -137,7 +137,6 @@ static void gap_params_init(void)
 uint8_t battery_level_get(void)
 {
     // Configure ADC
-    NRF_ADC->INTENSET   = ADC_INTENSET_END_Msk;
     NRF_ADC->CONFIG     = (ADC_CONFIG_RES_8bit                        << ADC_CONFIG_RES_Pos)     |
                           (ADC_CONFIG_INPSEL_SupplyOneThirdPrescaling << ADC_CONFIG_INPSEL_Pos)  |
                           (ADC_CONFIG_REFSEL_VBG                      << ADC_CONFIG_REFSEL_Pos)  |
