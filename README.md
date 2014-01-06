@@ -5,13 +5,13 @@ This project takes a temperature measurement using the internal temperature sens
 
 Requirements
 ------------
-- nRF51 SDK version 4.4.2
-- S110 SoftDevice version 5.2.1
+- nRF51 SDK version 5.1.0
+- S110 SoftDevice version 6.0.0
 - nRF51822 Evaluation Kit version 2.0.0
 
-The project may need modifications to work with later versions. 
+The project may need modifications to work with later versions or other boards. 
 
-To compile it, clone the repository in the nrf51822/Board/pca10001/ble/ folder.
+To compile it, clone the repository in the nrf51822/Board/pca10001/s110/ folder.
 
 About this project
 ------------------
