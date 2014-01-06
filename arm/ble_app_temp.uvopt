@@ -77,13 +77,13 @@
       </OPTFL>
       <CpuCode>0</CpuCode>
       <DllOpt>
-        <SimDllName></SimDllName>
-        <SimDllArguments></SimDllArguments>
-        <SimDlgDllName></SimDlgDllName>
-        <SimDlgDllArguments></SimDlgDllArguments>
+        <SimDllName>SARMCM3.DLL</SimDllName>
+        <SimDllArguments> </SimDllArguments>
+        <SimDlgDllName>DCM.DLL</SimDlgDllName>
+        <SimDlgDllArguments>-pCM0</SimDlgDllArguments>
         <TargetDllName>SARMCM3.DLL</TargetDllName>
-        <TargetDllArguments></TargetDllArguments>
-        <TargetDlgDllName>TARMCM1.DLL</TargetDlgDllName>
+        <TargetDllArguments> </TargetDllArguments>
+        <TargetDlgDllName>TCM.DLL</TargetDlgDllName>
         <TargetDlgDllArguments>-pCM0</TargetDlgDllArguments>
       </DllOpt>
       <DebugOpt>
@@ -173,7 +173,7 @@
         <aSer4>0</aSer4>
         <StkLoc>0</StkLoc>
         <TrcWin>0</TrcWin>
-        <newCpu>0</newCpu>
+        <newCpu>3</newCpu>
         <uProt>0</uProt>
       </DebugFlag>
       <LintExecutable></LintExecutable>
@@ -380,10 +380,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>27</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>138</TopLine>
-      <CurrentLine>163</CurrentLine>
+      <TopLine>38</TopLine>
+      <CurrentLine>40</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\..\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -513,8 +513,8 @@
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\Source\ble\ble_stack_handler.c</PathWithFileName>
-      <FilenameWithoutPath>ble_stack_handler.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\..\Source\ble\ble_debug_assert_handler.c</PathWithFileName>
+      <FilenameWithoutPath>ble_debug_assert_handler.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -526,11 +526,11 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\..\..\..\Source\ble\ble_debug_assert_handler.c</PathWithFileName>
-      <FilenameWithoutPath>ble_debug_assert_handler.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\..\..\..\Source\sd_common\softdevice_handler.c</PathWithFileName>
+      <FilenameWithoutPath>softdevice_handler.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

@@ -37,7 +37,7 @@
 #include "ble_srv_common.h"
 #include "ble_advdata.h"
 #include "ble_eval_board_pins.h"
-#include "ble_stack_handler.h"
+#include "softdevice_handler.h"
 #include "app_timer.h"
 #include "ble_debug_assert_handler.h"
 #include "nrf_temp.h"
@@ -304,24 +304,43 @@ static void ble_evt_dispatch(ble_evt_t * p_ble_evt)
 }
 
 
+/**@brief Function for dispatching a system event to interested modules.
+ *
+ * @details This function is called from the System event interrupt handler after a system
+ *          event has been received.
+ *
+ * @param[in]   sys_evt   System stack event.
+ */
+static void sys_evt_dispatch(uint32_t sys_evt)
+{
+}
+
+
 /**@brief Function for initializing the BLE stack.
  *
  * @details Initializes the SoftDevice and the BLE event interrupt.
  */
 static void ble_stack_init(void)
 {
-    BLE_STACK_HANDLER_INIT(NRF_CLOCK_LFCLKSRC_XTAL_20_PPM,
-                           BLE_L2CAP_MTU_DEF,
-                           ble_evt_dispatch,
-                           false);
-}
+    uint32_t err_code;
 
+    // Initialize the SoftDevice handler module.
+    SOFTDEVICE_HANDLER_INIT(NRF_CLOCK_LFCLKSRC_XTAL_20_PPM, false);
+
+    // Register with the SoftDevice handler module for BLE events.
+    err_code = softdevice_ble_evt_handler_set(ble_evt_dispatch);
+    APP_ERROR_CHECK(err_code);
+    
+    // Register with the SoftDevice handler module for BLE events.
+    err_code = softdevice_sys_evt_handler_set(sys_evt_dispatch);
+    APP_ERROR_CHECK(err_code);
+}
 
 /**@brief Function for the Power manager.
  */
 static void power_manage(void)
 {
-    uint32_t err_code = sd_app_event_wait();
+    uint32_t err_code = sd_app_evt_wait();
     APP_ERROR_CHECK(err_code);
 }
 

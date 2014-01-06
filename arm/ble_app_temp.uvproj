@@ -13,13 +13,13 @@
       <TargetOption>
         <TargetCommonOption>
           <Device>nRF51822_xxAA</Device>
-          <Vendor>Nordic</Vendor>
-          <Cpu>IRAM(0x20000000-0x20003FFF) IROM(0-0x3FFFF) CLOCK(16000000) CPUTYPE("Cortex-M0") ESEL ELITTLE</Cpu>
+          <Vendor>Nordic Semiconductor</Vendor>
+          <Cpu>IROM(0x00000000,0x40000) IRAM(0x20000000,0x4000) CPUTYPE("Cortex-M0") CLOCK(16000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
-          <StartupFile>"Device\Nordic\nRF51822\Source\templates\arm\arm_startup_nrf51.s"("Nordic Semiconductor nRF51822 Startup Code")</StartupFile>
-          <FlashDriverDll>UL2CM3(-UM0364FCE -O78 -S0 -C0 -TO18 -TC16000000 -TP21 -TDS800D -TDT0 -TDC1F -TIEFFFFFFFF -TIP8 -FO15 -FD20000000 -FC2000 -FN1 -FF0nRF51xxx -FS00 -FL0200000)</FlashDriverDll>
+          <StartupFile></StartupFile>
+          <FlashDriverDll></FlashDriverDll>
           <DeviceId>0</DeviceId>
-          <RegisterFile>nrf.h</RegisterFile>
+          <RegisterFile>$$Device:nRF51822_xxAA$Device\Include\nrf.h</RegisterFile>
           <MemoryEnv></MemoryEnv>
           <Cmp></Cmp>
           <Asm></Asm>
@@ -29,14 +29,14 @@
           <SLE66CMisc></SLE66CMisc>
           <SLE66AMisc></SLE66AMisc>
           <SLE66LinkerMisc></SLE66LinkerMisc>
-          <SFDFile>SFD\Nordic\nRF51\nrf51822.sfr</SFDFile>
+          <SFDFile>$$Device:nRF51822_xxAA$SVD\nrf51.xml</SFDFile>
           <bCustSvd>0</bCustSvd>
           <UseEnv>0</UseEnv>
           <BinPath></BinPath>
           <IncludePath></IncludePath>
           <LibPath></LibPath>
-          <RegisterFilePath>..\Device\Nordic\nRF51822\Include\</RegisterFilePath>
-          <DBRegisterFilePath>..\Device\Nordic\nRF51822\Include\</DBRegisterFilePath>
+          <RegisterFilePath></RegisterFilePath>
+          <DBRegisterFilePath></DBRegisterFilePath>
           <TargetStatus>
             <Error>0</Error>
             <ExitCodeStop>0</ExitCodeStop>
@@ -101,13 +101,13 @@
           <ComprImg>1</ComprImg>
         </CommonProperty>
         <DllOption>
-          <SimDllName></SimDllName>
-          <SimDllArguments></SimDllArguments>
-          <SimDlgDll></SimDlgDll>
-          <SimDlgDllArguments></SimDlgDllArguments>
+          <SimDllName>SARMCM3.DLL</SimDllName>
+          <SimDllArguments> </SimDllArguments>
+          <SimDlgDll>DCM.DLL</SimDlgDll>
+          <SimDlgDllArguments>-pCM0</SimDlgDllArguments>
           <TargetDllName>SARMCM3.DLL</TargetDllName>
-          <TargetDllArguments></TargetDllArguments>
-          <TargetDlgDll>TARMCM1.DLL</TargetDlgDll>
+          <TargetDllArguments> </TargetDllArguments>
+          <TargetDlgDll>TCM.DLL</TargetDlgDll>
           <TargetDlgDllArguments>-pCM0</TargetDlgDllArguments>
         </DllOption>
         <DebugOption>
@@ -219,7 +219,7 @@
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
             <useUlib>0</useUlib>
-            <EndSel>1</EndSel>
+            <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <RoSelD>3</RoSelD>
             <RwSelD>3</RwSelD>
@@ -303,8 +303,8 @@
               </OCR_RVCT3>
               <OCR_RVCT4>
                 <Type>1</Type>
-                <StartAddress>0x14000</StartAddress>
-                <Size>0x2b000</Size>
+                <StartAddress>0x0</StartAddress>
+                <Size>0x40000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
                 <Type>1</Type>
@@ -328,8 +328,8 @@
               </OCR_RVCT8>
               <OCR_RVCT9>
                 <Type>0</Type>
-                <StartAddress>0x20002000</StartAddress>
-                <Size>0x2000</Size>
+                <StartAddress>0x20000000</StartAddress>
+                <Size>0x4000</Size>
               </OCR_RVCT9>
               <OCR_RVCT10>
                 <Type>0</Type>
@@ -355,9 +355,9 @@
             <uSurpInc>0</uSurpInc>
             <VariousControls>
               <MiscControls>--c99</MiscControls>
-              <Define>NRF51 DEBUG_NRF_USER</Define>
+              <Define>NRF51 DEBUG_NRF_USER BOARD_PCA10001</Define>
               <Undefine></Undefine>
-              <IncludePath>..;..\..\..\..\..\Include;..\..\..\..\..\Include\app_common;..\..\..\..\..\Include\ble;..\..\..\..\..\Include\ble\ble_services;..\..\..\..\..\Include\ble\softdevice</IncludePath>
+              <IncludePath>..;..\..\..\..\..\Include;..\..\..\..\..\Include\app_common;..\..\..\..\..\Include\ble;..\..\..\..\..\Include\ble\ble_services;..\..\..\..\..\Include\s110;..\..\..\..\..\Include\sd_common</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -459,14 +459,14 @@
               <FilePath>..\..\..\..\..\Source\ble\ble_conn_params.c</FilePath>
             </File>
             <File>
-              <FileName>ble_stack_handler.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\Source\ble\ble_stack_handler.c</FilePath>
-            </File>
-            <File>
               <FileName>ble_debug_assert_handler.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\Source\ble\ble_debug_assert_handler.c</FilePath>
+            </File>
+            <File>
+              <FileName>softdevice_handler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\Source\sd_common\softdevice_handler.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -925,14 +925,14 @@
               <FilePath>..\..\..\..\..\Source\ble\ble_conn_params.c</FilePath>
             </File>
             <File>
-              <FileName>ble_stack_handler.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\Source\ble\ble_stack_handler.c</FilePath>
-            </File>
-            <File>
               <FileName>ble_debug_assert_handler.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\Source\ble\ble_debug_assert_handler.c</FilePath>
+            </File>
+            <File>
+              <FileName>softdevice_handler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\Source\sd_common\softdevice_handler.c</FilePath>
             </File>
           </Files>
         </Group>
