@@ -36,7 +36,7 @@
 #include "ble_hci.h"
 #include "ble_srv_common.h"
 #include "ble_advdata.h"
-#include "ble_eval_board_pins.h"
+#include "boards.h"
 #include "softdevice_handler.h"
 #include "app_timer.h"
 #include "ble_debug_assert_handler.h"
@@ -44,6 +44,9 @@
 
 #define ADV_INTERVAL_IN_MS              1200
 #define VBAT_MAX_IN_MV                  3300
+
+#define ADVERTISING_LED_PIN_NO          LED_0                                       /**< Is on when device is advertising. */
+#define CONNECTED_LED_PIN_NO            LED_1                                       /**< Is on when device has connected. */
 
 #define ADV_INTERVAL                    MSEC_TO_UNITS(ADV_INTERVAL_IN_MS, UNIT_0_625_MS) /**< The advertising interval (in units of 0.625 ms. */
 #define ADV_TIMEOUT_IN_SECONDS          0                                           /**< The advertising timeout (in units of seconds). */
@@ -108,8 +111,8 @@ void assert_nrf_callback(uint16_t line_num, const uint8_t * p_file_name)
  */
 static void leds_init(void)
 {
-    GPIO_LED_CONFIG(ADVERTISING_LED_PIN_NO);
-    GPIO_LED_CONFIG(CONNECTED_LED_PIN_NO);
+    nrf_gpio_cfg_output(ADVERTISING_LED_PIN_NO);
+    nrf_gpio_cfg_output(CONNECTED_LED_PIN_NO);
 }
 
 /**@brief Function for the GAP initialization.
