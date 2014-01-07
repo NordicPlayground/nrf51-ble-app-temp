@@ -1,12 +1,11 @@
-/* Copyright (c) 2012 Nordic Semiconductor. All Rights Reserved.
+/* Copyright (c) 2013 Nordic Semiconductor. All Rights Reserved.
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms given in license.txt in the root folder of the 
- * project.
- *
- * See README.md for a description of the application. 
- *
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the license.txt file.
  */
+/*
+ * See README.md for a description of the application. 
+ */ 
 
 #include <stdint.h>
 #include <string.h>
