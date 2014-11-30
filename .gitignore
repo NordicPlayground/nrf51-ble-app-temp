@@ -2,7 +2,9 @@
 !*/_build/*.hex
 arm/*
 !arm/*.uvproj
+!arm/*.uvprojx
 !arm/*.uvopt
+!arm/*.uvoptx
 *.uvgui.*
 *.dep
 *.log
