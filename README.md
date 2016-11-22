@@ -5,20 +5,20 @@ This project takes a temperature measurement using the internal temperature sens
 
 Requirements
 ------------
-- nRF51 SDK version 5.1.0
-- S110 SoftDevice version 6.0.0
-- nRF51822 Evaluation Kit version 2.0.0
+- nRF5 SDK version 12.1.0
+- S130 SoftDevice version 2.0.1
+- nRF51 Development Kit PCA10028
 
 The project may need modifications to work with later versions or other boards. 
 
-To compile it, clone the repository in the nrf51822/Board/pca10001/s110/ folder.
+To compile it, clone the repository in the examples/ble_peripheral/ folder in the nRF5 SDK.
 
 About this project
 ------------------
-This application is one of several applications that has been built by the support team at Nordic Semiconductor, as a demo of some particular feature or use case. It has not necessarily been thoroughly tested, so there might be unknown issues. It is hence provided as-is, without any warranty. 
+This project is a fork of https://github.com/NordicSemiconductor/nrf51-ble-app-temp 
 
-However, in the hope that it still may be useful also for others than the ones we initially wrote it for, we've chosen to distribute it here on GitHub. 
+The main purpose of the fork was to port it to the latest nRF5 SDK and add gcc support.
 
-The application is built to be used with the official nRF51 SDK, that can be downloaded from https://www.nordicsemi.no, provided you have a product key for one of our kits.
+It has not been thoroughly tested, so there might be unknown issues. It is provided as-is, without any warranty. 
 
-Please post any questions about this project on https://devzone.nordicsemi.com.
+The application is built to be used with the official nRF5 SDK, that can be downloaded from http://developer.nordicsemi.com/nRF5_SDK/
