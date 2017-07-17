@@ -14,7 +14,6 @@
 #include "app_util.h"
 #include "app_error.h"
 #include "nrf_gpio.h"
-#include "nrf51_bitfields.h"
 #include "ble.h"
 #include "ble_srv_common.h"
 #include "ble_advdata.h"
@@ -98,6 +97,7 @@ static void gap_params_init(void)
 
 uint8_t battery_level_get(void)
 {
+#ifdef ADC_PRESENT
     // Configure ADC
     NRF_ADC->CONFIG     = (ADC_CONFIG_RES_8bit                        << ADC_CONFIG_RES_Pos)     |
                           (ADC_CONFIG_INPSEL_SupplyOneThirdPrescaling << ADC_CONFIG_INPSEL_Pos)  |
@@ -122,6 +122,10 @@ uint8_t battery_level_get(void)
     NRF_ADC->TASKS_STOP     = 1;
     
     return (uint8_t) ((vbat_current_in_mv * 100) / VBAT_MAX_IN_MV);
+#else // SAADC_PRESENT
+	// SAADC not supported yet, just say the battery level is 100 for now
+	return 100;
+#endif
 }
 
 uint32_t temperature_data_get(void)

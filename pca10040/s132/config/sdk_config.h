@@ -231,9 +231,13 @@
 // <1=> 1 
 // <2=> 2 
 // <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
 
 #ifndef ADC_CONFIG_IRQ_PRIORITY
-#define ADC_CONFIG_IRQ_PRIORITY 3
+#define ADC_CONFIG_IRQ_PRIORITY 7
 #endif
 
 // <e> ADC_CONFIG_LOG_ENABLED - Enables logging in the module.
@@ -346,11 +350,9 @@
 // <o> CLOCK_CONFIG_XTAL_FREQ  - HF XTAL Frequency
  
 // <0=> Default (64 MHz) 
-// <255=> Default (16 MHz) 
-// <0=> 32 MHz 
 
 #ifndef CLOCK_CONFIG_XTAL_FREQ
-#define CLOCK_CONFIG_XTAL_FREQ 255
+#define CLOCK_CONFIG_XTAL_FREQ 0
 #endif
 
 // <o> CLOCK_CONFIG_LF_SRC  - LF Clock Source
@@ -371,9 +373,13 @@
 // <1=> 1 
 // <2=> 2 
 // <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
 
 #ifndef CLOCK_CONFIG_IRQ_PRIORITY
-#define CLOCK_CONFIG_IRQ_PRIORITY 3
+#define CLOCK_CONFIG_IRQ_PRIORITY 7
 #endif
 
 // <e> CLOCK_CONFIG_LOG_ENABLED - Enables logging in the module.
@@ -512,9 +518,13 @@
 // <1=> 1 
 // <2=> 2 
 // <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
 
 #ifndef COMP_CONFIG_IRQ_PRIORITY
-#define COMP_CONFIG_IRQ_PRIORITY 3
+#define COMP_CONFIG_IRQ_PRIORITY 7
 #endif
 
 // <e> COMP_CONFIG_LOG_ENABLED - Enables logging in the module.
@@ -654,9 +664,13 @@
 // <1=> 1 
 // <2=> 2 
 // <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
 
 #ifndef GPIOTE_CONFIG_IRQ_PRIORITY
-#define GPIOTE_CONFIG_IRQ_PRIORITY 3
+#define GPIOTE_CONFIG_IRQ_PRIORITY 7
 #endif
 
 // <e> GPIOTE_CONFIG_LOG_ENABLED - Enables logging in the module.
@@ -851,9 +865,13 @@
 // <1=> 1 
 // <2=> 2 
 // <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
 
 #ifndef I2S_CONFIG_IRQ_PRIORITY
-#define I2S_CONFIG_IRQ_PRIORITY 3
+#define I2S_CONFIG_IRQ_PRIORITY 7
 #endif
 
 // <e> I2S_CONFIG_LOG_ENABLED - Enables logging in the module.
@@ -982,9 +1000,13 @@
 // <1=> 1 
 // <2=> 2 
 // <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
 
 #ifndef LPCOMP_CONFIG_IRQ_PRIORITY
-#define LPCOMP_CONFIG_IRQ_PRIORITY 3
+#define LPCOMP_CONFIG_IRQ_PRIORITY 7
 #endif
 
 // <e> LPCOMP_CONFIG_LOG_ENABLED - Enables logging in the module.
@@ -1085,9 +1107,13 @@
 // <1=> 1 
 // <2=> 2 
 // <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
 
 #ifndef PDM_CONFIG_IRQ_PRIORITY
-#define PDM_CONFIG_IRQ_PRIORITY 3
+#define PDM_CONFIG_IRQ_PRIORITY 7
 #endif
 
 // <e> PDM_CONFIG_LOG_ENABLED - Enables logging in the module.
@@ -1222,9 +1248,13 @@
 // <1=> 1 
 // <2=> 2 
 // <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
 
 #ifndef POWER_CONFIG_IRQ_PRIORITY
-#define POWER_CONFIG_IRQ_PRIORITY 3
+#define POWER_CONFIG_IRQ_PRIORITY 7
 #endif
 
 // <q> POWER_CONFIG_DEFAULT_DCDCEN  - The default configuration of main DCDC regulator
@@ -1580,9 +1610,13 @@
 // <1=> 1 
 // <2=> 2 
 // <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
 
 #ifndef QDEC_CONFIG_IRQ_PRIORITY
-#define QDEC_CONFIG_IRQ_PRIORITY 3
+#define QDEC_CONFIG_IRQ_PRIORITY 7
 #endif
 
 // <e> QDEC_CONFIG_LOG_ENABLED - Enables logging in the module.
@@ -1667,9 +1701,13 @@
 // <1=> 1 
 // <2=> 2 
 // <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
 
 #ifndef RNG_CONFIG_IRQ_PRIORITY
-#define RNG_CONFIG_IRQ_PRIORITY 3
+#define RNG_CONFIG_IRQ_PRIORITY 7
 #endif
 
 // <e> RNG_CONFIG_LOG_ENABLED - Enables logging in the module.
@@ -1756,9 +1794,13 @@
 // <1=> 1 
 // <2=> 2 
 // <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
 
 #ifndef RTC_DEFAULT_CONFIG_IRQ_PRIORITY
-#define RTC_DEFAULT_CONFIG_IRQ_PRIORITY 3
+#define RTC_DEFAULT_CONFIG_IRQ_PRIORITY 7
 #endif
 
 // <q> RTC0_ENABLED  - Enable RTC0 instance
@@ -1891,9 +1933,13 @@
 // <1=> 1 
 // <2=> 2 
 // <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
 
 #ifndef SAADC_CONFIG_IRQ_PRIORITY
-#define SAADC_CONFIG_IRQ_PRIORITY 3
+#define SAADC_CONFIG_IRQ_PRIORITY 7
 #endif
 
 // <e> SAADC_CONFIG_LOG_ENABLED - Enables logging in the module.
@@ -1966,9 +2012,13 @@
 // <1=> 1 
 // <2=> 2 
 // <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
 
 #ifndef SPIS_DEFAULT_CONFIG_IRQ_PRIORITY
-#define SPIS_DEFAULT_CONFIG_IRQ_PRIORITY 3
+#define SPIS_DEFAULT_CONFIG_IRQ_PRIORITY 7
 #endif
 
 // <o> SPIS_DEFAULT_MODE  - Mode
@@ -2096,9 +2146,13 @@
 // <1=> 1 
 // <2=> 2 
 // <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
 
 #ifndef SPI_DEFAULT_CONFIG_IRQ_PRIORITY
-#define SPI_DEFAULT_CONFIG_IRQ_PRIORITY 3
+#define SPI_DEFAULT_CONFIG_IRQ_PRIORITY 7
 #endif
 
 // <e> SPI0_ENABLED - Enable SPI0 instance
@@ -2111,7 +2165,7 @@
  
 
 #ifndef SPI0_USE_EASY_DMA
-#define SPI0_USE_EASY_DMA 0
+#define SPI0_USE_EASY_DMA 1
 #endif
 
 // <o> SPI0_DEFAULT_FREQUENCY  - SPI frequency
@@ -2141,7 +2195,7 @@
  
 
 #ifndef SPI1_USE_EASY_DMA
-#define SPI1_USE_EASY_DMA 0
+#define SPI1_USE_EASY_DMA 1
 #endif
 
 // <o> SPI1_DEFAULT_FREQUENCY  - SPI frequency
@@ -2171,14 +2225,14 @@
  
 
 #ifndef SPI2_USE_EASY_DMA
-#define SPI2_USE_EASY_DMA 0
+#define SPI2_USE_EASY_DMA 1
 #endif
 
 // <q> SPI2_DEFAULT_FREQUENCY  - Use EasyDMA
  
 
 #ifndef SPI2_DEFAULT_FREQUENCY
-#define SPI2_DEFAULT_FREQUENCY 0
+#define SPI2_DEFAULT_FREQUENCY 1
 #endif
 
 #endif //SPI2_ENABLED
@@ -2291,9 +2345,13 @@
 // <1=> 1 
 // <2=> 2 
 // <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
 
 #ifndef TIMER_DEFAULT_CONFIG_IRQ_PRIORITY
-#define TIMER_DEFAULT_CONFIG_IRQ_PRIORITY 3
+#define TIMER_DEFAULT_CONFIG_IRQ_PRIORITY 7
 #endif
 
 // <q> TIMER0_ENABLED  - Enable TIMER0 instance
@@ -2431,9 +2489,13 @@
 // <1=> 1 
 // <2=> 2 
 // <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
 
 #ifndef TWIS_DEFAULT_CONFIG_IRQ_PRIORITY
-#define TWIS_DEFAULT_CONFIG_IRQ_PRIORITY 3
+#define TWIS_DEFAULT_CONFIG_IRQ_PRIORITY 7
 #endif
 
 // <q> TWIS0_ENABLED  - Enable TWIS0 instance
@@ -2562,9 +2624,13 @@
 // <1=> 1 
 // <2=> 2 
 // <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
 
 #ifndef TWI_DEFAULT_CONFIG_IRQ_PRIORITY
-#define TWI_DEFAULT_CONFIG_IRQ_PRIORITY 3
+#define TWI_DEFAULT_CONFIG_IRQ_PRIORITY 7
 #endif
 
 // <e> TWI0_ENABLED - Enable TWI0 instance
@@ -2691,7 +2757,7 @@
 // <10289152=> 38400 baud 
 // <15400960=> 57600 baud 
 // <20615168=> 76800 baud 
-// <30924800=> 115200 baud 
+// <30801920=> 115200 baud 
 // <61865984=> 230400 baud 
 // <67108864=> 250000 baud 
 // <121634816=> 460800 baud 
@@ -2699,7 +2765,7 @@
 // <268435456=> 57600 baud 
 
 #ifndef UART_DEFAULT_CONFIG_BAUDRATE
-#define UART_DEFAULT_CONFIG_BAUDRATE 30924800
+#define UART_DEFAULT_CONFIG_BAUDRATE 30801920
 #endif
 
 // <o> UART_DEFAULT_CONFIG_IRQ_PRIORITY  - Interrupt priority
@@ -2710,9 +2776,13 @@
 // <1=> 1 
 // <2=> 2 
 // <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
 
 #ifndef UART_DEFAULT_CONFIG_IRQ_PRIORITY
-#define UART_DEFAULT_CONFIG_IRQ_PRIORITY 3
+#define UART_DEFAULT_CONFIG_IRQ_PRIORITY 7
 #endif
 
 // <q> UART_EASY_DMA_SUPPORT  - Driver supporting EasyDMA
@@ -2858,9 +2928,13 @@
 // <1=> 1 
 // <2=> 2 
 // <3=> 3 
+// <4=> 4 
+// <5=> 5 
+// <6=> 6 
+// <7=> 7 
 
 #ifndef WDT_CONFIG_IRQ_PRIORITY
-#define WDT_CONFIG_IRQ_PRIORITY 3
+#define WDT_CONFIG_IRQ_PRIORITY 7
 #endif
 
 // <e> WDT_CONFIG_LOG_ENABLED - Enables logging in the module.
@@ -3112,12 +3186,11 @@
 
 // <i> By default, a virtual page is the same size as a physical page.
 // <i> The size of a virtual page must be a multiple of the size of a physical page.
-// <256=> 256 
-// <512=> 512 
 // <1024=> 1024 
+// <2048=> 2048 
 
 #ifndef FDS_VIRTUAL_PAGE_SIZE
-#define FDS_VIRTUAL_PAGE_SIZE 256
+#define FDS_VIRTUAL_PAGE_SIZE 1024
 #endif
 
 #endif //FDS_ENABLED
@@ -3154,7 +3227,7 @@
 // <i> @ref sd_flash_write, which is 256 words for nRF51 ICs and 1024 words for nRF52 ICs.
 
 #ifndef FS_MAX_WRITE_SIZE_WORDS
-#define FS_MAX_WRITE_SIZE_WORDS 256
+#define FS_MAX_WRITE_SIZE_WORDS 1024
 #endif
 
 #endif //FSTORAGE_ENABLED
@@ -3209,7 +3282,7 @@
 // <10289152=> 38400 baud 
 // <15400960=> 57600 baud 
 // <20615168=> 76800 baud 
-// <30924800=> 115200 baud 
+// <30801920=> 115200 baud 
 // <61865984=> 230400 baud 
 // <67108864=> 250000 baud 
 // <121634816=> 460800 baud 
@@ -3217,7 +3290,7 @@
 // <268435456=> 57600 baud 
 
 #ifndef HCI_UART_BAUDRATE
-#define HCI_UART_BAUDRATE 30924800
+#define HCI_UART_BAUDRATE 30801920
 #endif
 
 // <o> HCI_UART_FLOW_CONTROL  - Hardware Flow Control
@@ -3231,22 +3304,22 @@
 
 // <o> HCI_UART_RX_PIN - UART RX pin 
 #ifndef HCI_UART_RX_PIN
-#define HCI_UART_RX_PIN 11
+#define HCI_UART_RX_PIN 8
 #endif
 
 // <o> HCI_UART_TX_PIN - UART TX pin 
 #ifndef HCI_UART_TX_PIN
-#define HCI_UART_TX_PIN 9
+#define HCI_UART_TX_PIN 6
 #endif
 
 // <o> HCI_UART_RTS_PIN - UART RTS pin 
 #ifndef HCI_UART_RTS_PIN
-#define HCI_UART_RTS_PIN 8
+#define HCI_UART_RTS_PIN 5
 #endif
 
 // <o> HCI_UART_CTS_PIN - UART CTS pin 
 #ifndef HCI_UART_CTS_PIN
-#define HCI_UART_CTS_PIN 10
+#define HCI_UART_CTS_PIN 7
 #endif
 
 #endif //HCI_SLIP_ENABLED
@@ -3612,7 +3685,7 @@
 // <10289152=> 38400 baud 
 // <15400960=> 57600 baud 
 // <20615168=> 76800 baud 
-// <30924800=> 115200 baud 
+// <30801920=> 115200 baud 
 // <61865984=> 230400 baud 
 // <67108864=> 250000 baud 
 // <121634816=> 460800 baud 
@@ -3620,27 +3693,27 @@
 // <268435456=> 57600 baud 
 
 #ifndef NRF_LOG_BACKEND_SERIAL_UART_BAUDRATE
-#define NRF_LOG_BACKEND_SERIAL_UART_BAUDRATE 30924800
+#define NRF_LOG_BACKEND_SERIAL_UART_BAUDRATE 30801920
 #endif
 
 // <o> NRF_LOG_BACKEND_SERIAL_UART_TX_PIN - UART TX pin 
 #ifndef NRF_LOG_BACKEND_SERIAL_UART_TX_PIN
-#define NRF_LOG_BACKEND_SERIAL_UART_TX_PIN 9
+#define NRF_LOG_BACKEND_SERIAL_UART_TX_PIN 6
 #endif
 
 // <o> NRF_LOG_BACKEND_SERIAL_UART_RX_PIN - UART RX pin 
 #ifndef NRF_LOG_BACKEND_SERIAL_UART_RX_PIN
-#define NRF_LOG_BACKEND_SERIAL_UART_RX_PIN 11
+#define NRF_LOG_BACKEND_SERIAL_UART_RX_PIN 8
 #endif
 
 // <o> NRF_LOG_BACKEND_SERIAL_UART_RTS_PIN - UART RTS pin 
 #ifndef NRF_LOG_BACKEND_SERIAL_UART_RTS_PIN
-#define NRF_LOG_BACKEND_SERIAL_UART_RTS_PIN 8
+#define NRF_LOG_BACKEND_SERIAL_UART_RTS_PIN 5
 #endif
 
 // <o> NRF_LOG_BACKEND_SERIAL_UART_CTS_PIN - UART CTS pin 
 #ifndef NRF_LOG_BACKEND_SERIAL_UART_CTS_PIN
-#define NRF_LOG_BACKEND_SERIAL_UART_CTS_PIN 10
+#define NRF_LOG_BACKEND_SERIAL_UART_CTS_PIN 7
 #endif
 
 // <o> NRF_LOG_BACKEND_SERIAL_UART_FLOW_CONTROL  - Hardware Flow Control
