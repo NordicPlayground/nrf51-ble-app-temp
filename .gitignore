@@ -1,5 +1,3 @@
-*/_build/*
-!*/_build/*.hex
 arm/*
 !arm/*.uvproj
 !arm/*.uvprojx
@@ -10,4 +8,18 @@ arm/*
 *.log
 *.bak
 *.ini
-
+*.rej
+*.orig
+_build
+BuildLog.log
+log.log
+*.emSession
+Output
+*.jlink
+.*.swp
+*.uvguix.*
+JLinkLog.txt
+JLinkSettings.ini
+EventRecorderStub.scvd
+settings
+*.ewt

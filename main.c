@@ -14,24 +14,27 @@
 #include "app_util.h"
 #include "app_error.h"
 #include "nrf_gpio.h"
-#include "nrf51_bitfields.h"
 #include "ble.h"
-#include "ble_hci.h"
 #include "ble_srv_common.h"
 #include "ble_advdata.h"
 #include "boards.h"
 #include "softdevice_handler.h"
 #include "app_timer.h"
-#include "ble_debug_assert_handler.h"
 #include "nrf_soc.h"
 
 #define IS_SRVC_CHANGED_CHARACT_PRESENT 0                                           /**< Include or not the service_changed characteristic. if not enabled, the server's database cannot be changed for the lifetime of the device*/
 
+#if (NRF_SD_BLE_API_VERSION == 3)
+#define NRF_BLE_MAX_MTU_SIZE            GATT_MTU_SIZE_DEFAULT                       /**< MTU size used in the softdevice enabling and to reply to a BLE_GATTS_EVT_EXCHANGE_MTU_REQUEST event. */
+#endif
+
 #define ADV_INTERVAL_IN_MS              1200
 #define VBAT_MAX_IN_MV                  3300
 
-#define ADVERTISING_LED_PIN_NO          LED_0                                       /**< Is on when device is advertising. */
-#define CONNECTED_LED_PIN_NO            LED_1                                       /**< Is on when device has connected. */
+#define ADVERTISING_LED_PIN_NO          LED_1                                       /**< Is on when device is advertising. */
+
+#define CENTRAL_LINK_COUNT              0                                           /**< Number of central links used by the application. When changing this number remember to adjust the RAM settings*/
+#define PERIPHERAL_LINK_COUNT           1                                           /**< Number of peripheral links used by the application. When changing this number remember to adjust the RAM settings*/
 
 #define ADV_INTERVAL                    MSEC_TO_UNITS(ADV_INTERVAL_IN_MS, UNIT_0_625_MS) /**< The advertising interval (in units of 0.625 ms. */
 #define ADV_TIMEOUT_IN_SECONDS          0                                           /**< The advertising timeout (in units of seconds). */
@@ -44,35 +47,7 @@
 #define DEAD_BEEF                       0xDEADBEEF                                  /**< Value used as error code on stack dump, can be used to identify stack location on stack unwind. */
 
 
-static app_timer_id_t m_advdata_update_timer;
-
-/**@brief Function for error handling, which is called when an error has occurred. 
- *
- * @warning This handler is an example only and does not fit a final product. You need to analyze 
- *          how your product is supposed to react in case of error.
- *
- * @param[in] error_code  Error code supplied to the handler.
- * @param[in] line_num    Line number where the handler is called.
- * @param[in] p_file_name Pointer to the file name. 
- */
-void app_error_handler(uint32_t error_code, uint32_t line_num, const uint8_t * p_file_name)
-{
-    nrf_gpio_pin_set(CONNECTED_LED_PIN_NO);
-    nrf_gpio_pin_set(ADVERTISING_LED_PIN_NO);
-
-    // This call can be used for debug purposes during development of an application.
-    // @note CAUTION: Activating this code will write the stack to flash on an error.
-    //                This function should NOT be used in a final product.
-    //                It is intended STRICTLY for development/debugging purposes.
-    //                The flash write will happen EVEN if the radio is active, thus interrupting
-    //                any communication.
-    //                Use with care. Un-comment the line below to use.
-    ble_debug_assert_handler(error_code, line_num, p_file_name);
-
-    // On assert, the system can only recover with a reset.
-    //NVIC_SystemReset();
-}
-
+APP_TIMER_DEF(m_advdata_update_timer);
 
 /**@brief Callback function for asserts in the SoftDevice.
  *
@@ -97,7 +72,6 @@ void assert_nrf_callback(uint16_t line_num, const uint8_t * p_file_name)
 static void leds_init(void)
 {
     nrf_gpio_cfg_output(ADVERTISING_LED_PIN_NO);
-    nrf_gpio_cfg_output(CONNECTED_LED_PIN_NO);
 }
 
 /**@brief Function for the GAP initialization.
@@ -111,7 +85,7 @@ static void gap_params_init(void)
     ble_gap_conn_sec_mode_t sec_mode;
     
     char name_buffer[9];
-    sprintf(name_buffer, "%08X", NRF_FICR->DEVICEID[0]);
+    sprintf(name_buffer, "%08X", (unsigned int)NRF_FICR->DEVICEID[0]);
     
     BLE_GAP_CONN_SEC_MODE_SET_OPEN(&sec_mode);
     
@@ -123,6 +97,7 @@ static void gap_params_init(void)
 
 uint8_t battery_level_get(void)
 {
+#ifdef ADC_PRESENT
     // Configure ADC
     NRF_ADC->CONFIG     = (ADC_CONFIG_RES_8bit                        << ADC_CONFIG_RES_Pos)     |
                           (ADC_CONFIG_INPSEL_SupplyOneThirdPrescaling << ADC_CONFIG_INPSEL_Pos)  |
@@ -147,6 +122,10 @@ uint8_t battery_level_get(void)
     NRF_ADC->TASKS_STOP     = 1;
     
     return (uint8_t) ((vbat_current_in_mv * 100) / VBAT_MAX_IN_MV);
+#else // SAADC_PRESENT
+	// SAADC not supported yet, just say the battery level is 100 for now
+	return 100;
+#endif
 }
 
 uint32_t temperature_data_get(void)
@@ -193,8 +172,7 @@ static void advdata_update(void)
 
     advdata.name_type            = BLE_ADVDATA_FULL_NAME;
     advdata.include_appearance   = false;
-    advdata.flags.size           = sizeof(flags);
-    advdata.flags.p_data         = &flags;
+    advdata.flags                = flags;
     advdata.service_data_count   = 2;
     advdata.p_service_data_array = service_data;
 
@@ -214,7 +192,7 @@ void advdata_update_timer_timeout_handler(void * p_context)
 static void timers_init(void)
 {
     // Initialize timer module, making it use the scheduler
-    APP_TIMER_INIT(APP_TIMER_PRESCALER, APP_TIMER_MAX_TIMERS, APP_TIMER_OP_QUEUE_SIZE, false);
+    APP_TIMER_INIT(APP_TIMER_PRESCALER, APP_TIMER_OP_QUEUE_SIZE, false);
     
     uint32_t err_code = app_timer_create(&m_advdata_update_timer, APP_TIMER_MODE_REPEATED, advdata_update_timer_timeout_handler);
     APP_ERROR_CHECK(err_code);
@@ -248,7 +226,7 @@ static void advertising_start(void)
 
     err_code = sd_ble_gap_adv_start(&adv_params);
     APP_ERROR_CHECK(err_code);
-    nrf_gpio_pin_set(ADVERTISING_LED_PIN_NO);
+    nrf_gpio_pin_clear(ADVERTISING_LED_PIN_NO);
 }
 
 
@@ -303,14 +281,25 @@ static void ble_stack_init(void)
 {
     uint32_t err_code;
 
-    // Initialize the SoftDevice handler module.
-    SOFTDEVICE_HANDLER_INIT(NRF_CLOCK_LFCLKSRC_XTAL_20_PPM, false);
+    nrf_clock_lf_cfg_t clock_lf_cfg = NRF_CLOCK_LFCLKSRC;
 
-    // Enable BLE stack
+    // Initialize the SoftDevice handler module.
+    SOFTDEVICE_HANDLER_INIT(&clock_lf_cfg, NULL);
+
     ble_enable_params_t ble_enable_params;
-    memset(&ble_enable_params, 0, sizeof(ble_enable_params));
-    ble_enable_params.gatts_enable_params.service_changed = IS_SRVC_CHANGED_CHARACT_PRESENT;
-    err_code = sd_ble_enable(&ble_enable_params);
+    err_code = softdevice_enable_get_default_config(CENTRAL_LINK_COUNT,
+                                                    PERIPHERAL_LINK_COUNT,
+                                                    &ble_enable_params);
+    APP_ERROR_CHECK(err_code);
+
+    // Check the ram settings against the used number of links
+    CHECK_RAM_START_ADDR(CENTRAL_LINK_COUNT, PERIPHERAL_LINK_COUNT);
+
+    // Enable BLE stack.
+#if (NRF_SD_BLE_API_VERSION == 3)
+    ble_enable_params.gatt_enable_params.att_mtu = NRF_BLE_MAX_MTU_SIZE;
+#endif
+    err_code = softdevice_enable(&ble_enable_params);
     APP_ERROR_CHECK(err_code);
 
     // Register with the SoftDevice handler module for BLE events.
